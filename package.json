@@ -1,0 +1,23 @@
+{
+  "name": "pipelog-git-metadata",
+  "version": "0.0.0",
+  "description": "Pipelog plugin, extracts post addition and modification dates from its git repository.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/forabi/pipelog-git-metadata.git"
+  },
+  "keywords": [
+    "pipelog-plugin",
+    "git"
+  ],
+  "author": "Muhammad Fawwaz Orabi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/forabi/pipelog-git-metadata/issues"
+  },
+  "homepage": "https://github.com/forabi/pipelog-git-metadata"
+}
