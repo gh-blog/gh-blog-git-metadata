@@ -18,11 +18,13 @@ module.exports = (repo) ->
         filename = file.basename || path.basename file.path
 
         dateAdded =
-            git "git log -1 --pretty=format:'%cd' --diff-filter=A #{filename}", cwd: repo
+            git("git log -1 --pretty=format:'%cd'
+                 --diff-filter=A #{filename}", cwd: repo)
             .then strToDate
 
         dateModified =
-            git "git log -1 --pretty=format:'%cd' --diff-filter=M #{filename}", cwd: repo
+            git("git log -1 --pretty=format:'%cd'
+                 --diff-filter=M #{filename}", cwd: repo)
             .then strToDate
 
         Promise.all [dateAdded, dateModified]
