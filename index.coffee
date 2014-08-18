@@ -37,6 +37,6 @@ module.exports = (repo) ->
         .catch (err) ->
             # @TODO: debug
             console.log 'Error in metadata', err
-            throw err
+            done e, file
 
     through2.obj processFile
