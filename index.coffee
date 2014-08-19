@@ -5,6 +5,9 @@ Promise = require 'promise'
 _ = require 'lodash'
 
 # Requires: []
+# Must run before 'html'
+emailRegExp = /email=\[([^\[\]]*)\]/i
+dateRegExp = /date=\[([^\[\]]*)\]/i
 
 module.exports = (repo, authors) ->
     if not authors # @TODO
@@ -20,13 +23,12 @@ module.exports = (repo, authors) ->
         else
             throw new TypeError 'Date must be a string'
 
-    parseLine = (str) ->
-        matches = str.match /^(\S*@\S*\.\S*)\s(.*)$/i
-        if matches
-            email = matches[1].toLowerCase().trim()
-            date = parseDate matches[2]
-            return { email, date }
-        return null
+    parseLine = (fallbackEmail) ->
+        (str) ->
+            result = { }
+            try result.email = str.match(emailRegExp)[1].toLowerCase().trim()
+            try result.date = parseDate str.match(dateRegExp)[1]
+            result
 
     getAuthor = (email) ->
         (_.find authors, { email }) || { email }
@@ -34,15 +36,21 @@ module.exports = (repo, authors) ->
     processFile = (file, enc, done) ->
         filename = file.basename || path.basename file.path
 
+        cmdCreated =
+            "git log -1 --pretty=format:'email=[%ae] date=[%cd]'
+            --diff-filter=A #{filename}"
+
+        cmdModified =
+            "git log -1 --pretty=format:'email=[%ae] date=[%cd]'
+            --diff-filter=M #{filename}"
+
         getCreated =
-            git("git log -1 --pretty=format:'%ae %cd'
-                 --diff-filter=A #{filename}", cwd: repo)
-            .then parseLine
+            git(cmdCreated, cwd: repo)
+            .then parseLine authors[0].email
 
         getModified =
-            git("git log -1 --pretty=format:'%ae %cd'
-                 --diff-filter=M #{filename}", cwd: repo)
-            .then parseLine
+            git(cmdModified, cwd: repo)
+            .then parseLine authors[0].email
 
         Promise.all [getCreated, getModified]
         .then (array) ->
