@@ -1,23 +1,23 @@
 {
-  "name": "pipelog-git-metadata",
+  "name": "gh-blog-git-metadata",
   "version": "0.0.0",
-  "description": "Pipelog plugin, extracts post addition and modification dates from its git repository.",
+  "description": "gh-blog plugin, extracts post addition and modification dates from its git repository.",
   "main": "index.js",
   "scripts": {
     "test": "node test"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/forabi/pipelog-git-metadata.git"
+    "url": "https://github.com/gh-blog/gh-blog-git-metadata.git"
   },
   "keywords": [
-    "pipelog-plugin",
+    "gh-blog-plugin",
     "git"
   ],
   "author": "Muhammad Fawwaz Orabi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/forabi/pipelog-git-metadata/issues"
+    "url": "https://github.com/gh-blog/gh-blog-git-metadata/issues"
   },
-  "homepage": "https://github.com/forabi/pipelog-git-metadata"
+  "homepage": "https://github.com/gh-blog/gh-blog-git-metadata"
 }
