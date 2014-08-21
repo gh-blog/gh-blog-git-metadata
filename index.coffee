@@ -2,7 +2,7 @@ path = require 'path'
 through2 = require 'through2'
 git = require 'git-promise'
 Promise = require 'promise'
-_ = require 'lodash'
+_ = find: require 'lodash.find'
 
 # Requires: []
 # Must run before 'html'

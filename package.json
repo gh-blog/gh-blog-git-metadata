@@ -19,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/gh-blog/gh-blog-git-metadata/issues"
   },
-  "homepage": "https://github.com/gh-blog/gh-blog-git-metadata"
+  "homepage": "https://github.com/gh-blog/gh-blog-git-metadata",
+  "dependencies": {
+    "git-promise": "^0.2.0",
+    "lodash.find": "^2.4.1",
+    "promise": "^5.0.0",
+    "through2": "^0.6.1"
+  }
 }
