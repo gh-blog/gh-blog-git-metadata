@@ -9,7 +9,9 @@ _ = find: require 'lodash.find'
 emailRegExp = /email=\[([^\[\]]*)\]/i
 dateRegExp = /date=\[([^\[\]]*)\]/i
 
-module.exports = (repo, authors) ->
+module.exports = (options) ->
+    { repo, authors } = options
+
     if not authors # @TODO
         console.log 'WARN: author information not provided'
 

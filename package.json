@@ -1,6 +1,6 @@
 {
   "name": "gh-blog-git-metadata",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "gh-blog plugin, extracts post addition and modification dates from its git repository.",
   "main": "index.js",
   "scripts": {
